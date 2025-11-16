@@ -1,0 +1,113 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 10px; 
+}
+
+.hero-img {
+  width: 150px;
+  max-width: 90%;
+  margin-bottom: 80px; 
+  filter: drop-shadow(0 0 8px rgba(76, 175, 80, 0.5));
+  transition: transform 0.3s ease-in-out;
+}
+
+.hero-img:hover {
+  transform: scale(1.05);
+}
+
+.brand {
+  font-size: 2.2rem;
+  color: #2e7d32;
+  margin-top: -80px; 
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #555;
+  margin-top: -5px;
+}
+
+.card {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 15px;
+  width: 320px;
+  text-align: center;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+  animation: fadeIn 1s ease-in-out;
+}
+.card h2 {
+  margin-bottom: 20px;
+  color: #2e7d32;
+}
+
+form input,
+form select {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+form button {
+  width: 100%;
+  padding: 12px;
+  background: #4caf50;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+form button:hover {
+  background: #388e3c;
+}
+
+
+a {
+  color: #2e7d32;
+  text-decoration: none;
+  font-weight: bold;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+#msg, #regMsg {
+  margin-top: 15px;
+  font-weight: bold;
+  color: #d32f2f;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+

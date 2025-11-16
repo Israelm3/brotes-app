@@ -1,0 +1,10 @@
+# Node
+node_modules/
+npm-debug.log
+.env
+
+# Firebase Admin key
+firebaseServiceAccountKey.json
+
+# Docker
+*.log

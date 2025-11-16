@@ -1,0 +1,72 @@
+:root {
+  --green-700: #2e7d32;
+  --green-500: #4caf50;
+  --bg: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+}
+
+html,body { height:100%; margin:0; font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); }
+
+.dash-header {   background: linear-gradient(rgba(72, 170, 70, 0.9), rgba(139, 195, 74, 0.9)),
+              url('/img/hojas-textura.jpg'); color:white; padding:12px 0; box-shadow:0 2px 8px rgba(0,0,0,0.15); }
+.dash-inner { max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:0 1rem; gap:1rem; }
+.dash-left { display:flex; align-items:center; gap:1rem; }
+.dash-logo { width:52px; height:52px; border-radius:8px; object-fit:cover; border:2px solid rgba(255,255,255,0.2);}
+.dash-actions .btn { margin-left:0.5rem; padding:8px 12px; border-radius:8px; border:none; cursor:pointer; font-weight:600;}
+.btn { background:white; color:var(--green-700); font-family: Verdana, Geneva, Tahoma, sans-serif; }
+.btn-danger { background:#d32f2f; color:white; }
+.btn:hover { transform:translateY(-2px); transition:0.15s; }
+
+/* Main layout */
+.dash-main { max-width:1200px; margin:1.5rem auto; display:grid; grid-template-columns: 1fr 1fr; gap:1.5rem; padding:0 1rem; box-sizing:border-box; }
+
+.plants-section, .status-section { background: #fff; border-radius:12px; padding:1rem; box-shadow:0 8px 20px rgba(0,0,0,0.08); }
+
+.plants-list { display:flex; flex-direction:column; gap:0.75rem; }
+.plant-card { border-left:6px solid var(--green-500); padding:12px; border-radius:8px; background:#fafafa; display:flex; flex-direction:column; }
+.plant-card h3 { margin:0 0 6px 0; color:var(--green-700); }
+.plant-card p { margin:0 0 8px 0; color:#333; font-size:0.95rem; }
+.plant-card .care { font-size:0.9rem; color:#555; }
+
+/* Progress / humidity */
+#progressArea { margin-bottom:12px; }
+.plant-status { padding:10px; background:#f7fff7; border-radius:8px; border:1px dashed #c8e6c9; margin-bottom:8px; }
+.humidity { font-size:1.05rem; margin-top:8px; }
+
+/* Responsive */
+@media (max-width:900px) {
+  .dash-main { grid-template-columns: 1fr; }
+  .dash-inner { flex-direction:column; gap:0.5rem; align-items:center; }
+  .dash-actions { display:flex; gap:0.5rem; flex-wrap:wrap; justify-content:center; }
+}
+
+/* === Activities / Challenges UI === */
+.activities-main { display:flex; gap:2rem; padding:2rem; flex-wrap:wrap; }
+.activities-panel, .challenges-panel { background: #fff; padding:1.2rem; border-radius:12px; box-shadow:0 8px 20px rgba(0,0,0,0.08); flex:1 1 420px; }
+.activities-table { width:100%; border-collapse:collapse; margin-top:0.8rem; }
+.activities-table th, .activities-table td { padding:10px; border-bottom:1px solid #eee; text-align:left; font-size:0.95rem; }
+.switch { position: relative; display:inline-block; width:46px; height:26px; }
+.switch input { opacity:0; width:0; height:0; }
+.slider { position:absolute; cursor:pointer; top:0; left:0; right:0; bottom:0; background:#ccc; transition:.4s; border-radius:26px; }
+.slider:before { position:absolute; content:""; height:20px; width:20px; left:3px; bottom:3px; background:white; transition:.4s; border-radius:50%; }
+input:checked + .slider { background:#4caf50; }
+input:checked + .slider:before { transform:translateX(20px); }
+
+/* Challenges */
+.challenges-list { display:flex; flex-direction:column; gap:12px; margin-top:0.6rem; }
+.challenge-card { padding:12px; border-radius:10px; background:linear-gradient(180deg,#fcfff6,#f0fff0); border:1px solid #e8f5e9; }
+.challenge-card h3 { margin-bottom:4px; color:#2e7d32; }
+.challenge-card .muted { color:#666; margin-bottom:8px; }
+.challenge-card .reward { font-weight:700; color:#388e3c; margin-bottom:8px; }
+.challenge-actions { display:flex; gap:8px; align-items:center; }
+
+.challenge-card.status-pending { opacity:1; }
+.challenge-card.status-almost { box-shadow:0 8px 18px rgba(61,157,65,0.12); border-left:4px solid #ffb300; }
+.challenge-card.status-done { background: linear-gradient(180deg,#e8f7ee,#e7ffef); border-left:4px solid #2e7d32; opacity:0.95; transform:translateY(-2px); }
+
+/* mensaje temporal */
+.temp-msg { position:fixed; right:20px; bottom:20px; background:#2e7d32; color:white; padding:10px 14px; border-radius:8px; box-shadow:0 6px 16px rgba(0,0,0,0.2); z-index:9999; font-weight:600; }
+
+/* Responsivo */
+@media (max-width:900px){
+  .activities-main { flex-direction:column; padding:1rem; }
+}

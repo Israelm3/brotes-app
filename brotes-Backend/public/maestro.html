@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maestro</title>
+
+  <!-- PWA -->
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#2e7d32">
+  <link rel="icon" href="/img/icons/icon-192.png" type="image/png">
+  <link rel="stylesheet" href="/css/maestro.css">
+</head>
+<body>
+  <header class="main-header">
+    <div class="header-inner">
+        <h2>Panel del Maestro</h2>
+      </div>
+      <button id="logoutBtn" class="btn secondary">Cerrar sesión</button>
+    </div>
+  </header>
+
+  <main class="dashboard-container">
+    <section class="huerto-panel">
+      <h3>Panel del Huerto Escolar</h3>
+      <div class="sensor-grid">
+        <div class="sensor-card">
+          <h4>Temperatura</h4>
+          <p id="temp">-- °C</p>
+        </div>
+        <div class="sensor-card">
+          <h4>Humedad</h4>
+          <p id="humedad">-- %</p>
+        </div>
+        <div class="sensor-card">
+          <h4>Luz Solar</h4>
+          <p id="luz">-- lux</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="tabla-estudiantes">
+      <h3>Progreso de Estudiantes</h3>
+      <table id="tablaEstudiantes">
+        <thead>
+          <tr>
+            <th>Estudiante</th>
+            <th>Actividad</th>
+            <th>Progreso</th>
+            <th>Última actualización</th>
+          </tr>
+        </thead>
+        <tbody id="tbodyEstudiantes">
+          <tr><td colspan="4">Cargando...</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer class="main-footer">
+  </footer>
+
+  <!-- Scripts -->
+  <script type="module" src="/js/indexedDB.js"></script>
+  <script type="module" src="/js/auth.js"></script>
+  <script type="module" src="/js/maestro.js"></script>
+
+  <script>
+    // Registrar el Service Worker
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/serviceworker.js').then(() => {
+        console.log('Service Worker activo para Maestro');
+      });
+    }
+  </script>
+</body>
+</html>

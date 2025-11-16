@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home</title>
+
+  <!-- Manifest-->
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#2e7d32">
+  <link rel="icon" type="image/png" sizes="192x192" href="/img/icons/icon-192.png">
+  <link rel="apple-touch-icon" href="/img/icons/icon-192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+  <link rel="stylesheet" href="/css/home.css" />
+</head>
+<body>
+  <header class="main-header">
+    <div class="header-inner">
+      <div class="logo">
+        <img src="/img/logo.png" alt="Huerto Inteligente" class="logo-img" />
+        <h2>Brotes de Aprendizaje</h2>
+      </div>
+      <div class="buttons header-buttons">
+        <a href="/login.html" class="btn primary">Iniciar Sesión</a>
+        <a href="/register.html" class="btn secondary">Registrarse</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero-home">
+    <div class="hero-text">
+      <h2>Huerto Inteligente</h2>
+      <p>
+        El proyecto <strong>Brotes de Aprendizaje</strong> integra hardware y software 
+        para ofrecer una solución tecnológica que fomenta el cuidado de plantas 
+        y cultivos a pequeña escala. <br><br>
+        Este huerto inteligente promueve la educación ambiental, la sostenibilidad 
+        y la curiosidad científica en estudiantes, combinando innovación y naturaleza.
+      </p>
+    </div>
+    <div class="hero-image">
+      <img src="/img/huerto.jpg" alt="Imagen de Huerto Escolar" />
+    </div>
+  </section>
+
+  <footer class="main-footer">
+    <p>© 2025 Brotes de Aprendizaje · Proyecto Huerto Escolar</p>
+  </footer>
+
+  <!-- Verificación de sesión activa -->
+  <script>
+    (async function(){
+      try {
+        const res = await fetch('/api/profile', { credentials: 'include' });
+        if (res.ok) {
+          const profile = await res.json();
+          if (profile.role === 'estudiante') {
+            window.location.href = '/dashboard.html';
+          }
+        }
+      } catch(e) {
+        console.warn("No hay sesión activa o error en la verificación.");
+      }
+    })();
+  </script>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker
+          .register('/serviceworker.js')
+          .then(reg => console.log('Service Worker registrado:', reg.scope))
+          .catch(err => console.error('Error al registrar el SW:', err));
+      });
+    } else {
+      console.warn('Este navegador no soporta Service Workers.');
+    }
+  </script>
+</body>
+</html>

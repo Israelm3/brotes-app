@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Registro</title>
+
+  <!-- Manifest -->
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#2e7d32">
+  <link rel="icon" type="image/png" sizes="192x192" href="/img/icons/icon-192.png">
+  <link rel="apple-touch-icon" href="/img/icons/icon-192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+
+<body>
+  <div class="container">
+    <div class="hero">
+      <img src="/img/logo.png" alt="Nueva Planta" class="hero-img" />
+      <h1 class="brand">Brotes de aprendizaje</h1>
+      <p class="subtitle">Crea tu cuenta y empieza a cultivar</p>
+    </div>
+
+    <div class="card">
+      <h2>Crear cuenta</h2>
+      <form id="regForm">
+        <input id="regEmail" type="email" placeholder="Correo electrónico" required />
+        <input id="regPassword" type="password" placeholder="Contraseña" required />
+
+        <label for="regRole">Selecciona tu rol</label>
+        <select id="regRole" required>
+          <option value="estudiante">Estudiante</option>
+          <option value="maestro">Maestro</option>
+          <option value="admin">Administrador</option>
+        </select>
+
+        <input id="adminSecret" type="text" placeholder="Only Admin" />
+        <button type="submit">Registrar</button>
+      </form>
+      <p id="regMsg"></p>
+      <p><a href="/index.html">Volver al Inicio</a></p>
+    </div>
+  </div>
+  <script type="module" src="/js/auth.js"></script>
+</body>
+</html>

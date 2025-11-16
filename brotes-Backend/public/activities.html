@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Actividades</title>
+
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#2e7d32">
+  <link rel="icon" type="image/png" sizes="192x192" href="/img/icons/icon-192.png">
+  <link rel="apple-touch-icon" href="/img/icons/icon-192.png">
+
+  <link rel="stylesheet" href="/css/dashboard.css" />
+</head>
+<body>
+  <header class="dash-header">
+    <div class="dash-inner">
+      <div class="dash-left">
+        <h1>Tareas y desafíos</h1>
+        <h4 class="subtitle"></h4>
+      </div>
+      <div class="dash-actions">
+        <button id="btnGoDashboard" class="btn">Volver</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="activities-main">
+    <section class="activities-panel">
+      <h2>Actividades recomendadas</h2>
+      <p class="muted">Sigue estas tareas periódicas para mantener tu huerto saludable.</p>
+      <table id="activitiesTable" class="activities-table">
+        <thead>
+          <tr><th>Actividad</th><th>Frecuencia</th><th>Descripción</th><th>Estado</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <section class="challenges-panel">
+      <h2>Retos para estudiantes</h2>
+      <p class="muted">Completa los retos y gana experiencia en huertos.</p>
+      <div id="challengesList" class="challenges-list"></div>
+    </section>
+  </main>
+
+  <script type="module" src="/js/activities.js"></script>
+  <script type="module" src="/js/auth.js"></script>
+</body>
+</html>

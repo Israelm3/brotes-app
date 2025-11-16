@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Panel Admin - Brotes</title>
+
+  <!-- Manifest -->
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#2e7d32">
+  <link rel="icon" type="image/png" sizes="192x192" href="/img/icons/icon-192.png">
+  <link rel="apple-touch-icon" href="/img/icons/icon-192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+  <link rel="stylesheet" href="/css/admin.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">Panel Admin</div>
+    <div class="user-area">
+      <span id="adminEmail"></span>
+      <button id="btnLogout">Cerrar sesión</button>
+    </div>
+  </header>
+
+  <main class="main">
+    <section class="left">
+      <div class="panel"> 
+        <h2>Usuarios</h2>
+        <div class="controls">
+          <label>Filtrar:
+            <select id="filterRole">
+              <option value="all">Todos</option>
+              <option value="estudiante">Estudiantes</option>
+              <option value="maestro">Maestros</option>
+              <option value="admin">Admins</option>
+            </select>
+          </label>
+          <button id="btnRefresh">Actualizar</button>
+        </div>
+
+        <div id="usersList" class="usersList">Cargando usuarios...</div>
+      </div>
+    </section>
+    
+    <aside class="right">
+      <div class="panel">
+        <h2>Crear usuario</h2>
+        <form id="createUserForm">
+          <input id="createEmail" type="email" placeholder="Correo" required />
+          <input id="createPassword" type="password" placeholder="Contraseña" required />
+          <label for="createRole">Rol</label>
+          <select id="createRole" required>
+            <option value="estudiante">Estudiante</option>
+            <option value="maestro">Maestro</option>
+            <option value="admin">Administrador</option>
+          </select>
+
+          <div id="adminSecretRow" style="display:none">
+            <input id="createAdminSecret" type="text" placeholder="Admin secret (si crea admin)" />
+          </div>
+
+          <button type="submit">Crear usuario</button>
+        </form>
+
+        <p id="createMsg" class="msg"></p>
+      </div>
+    </aside>
+  </main>
+  <script type="module" src="/js/admin.js"></script>
+</body>
+</html>
