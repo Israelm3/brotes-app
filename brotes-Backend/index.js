@@ -12,11 +12,13 @@ const app = express();
 
 if (process.env.ALLOW_CORS === 'true') {
   const FRONTEND_ORIGINS = [
-    'http://localhost:8080',
-    'http://127.0.0.1:8080',
-    'http://frontend:8080',
-    'http://localhost:50812'
-  ];
+  'http://localhost:8080',
+  'http://127.0.0.1:8080',
+  'http://frontend:8080',
+  'http://localhost:50812',
+  'http://localhost:3000', 
+  process.env.PROD_ORIGIN
+];
   app.use(cors({
     origin: (origin, callback) => {
       if (!origin || FRONTEND_ORIGINS.includes(origin)) return callback(null, true);

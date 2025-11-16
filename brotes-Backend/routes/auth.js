@@ -63,17 +63,17 @@ router.post('/register', registerLimiter, async (req, res) => {
 
   const strongPasswordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
   if (!strongPasswordRegex.test(password)) {
-    return res.status(400).json({ error: 'Contraseña débil. Debe tener mínimo 8 caracteres, mayúscula, minúscula, número y símbolo.' });
+    return res.status(400).json({
+      error: 'Contraseña débil. Debe tener mínimo 8 caracteres, mayúscula, minúscula, número y símbolo.'
+    });
   }
-
+  // permitir múltiples admins
   if (requestedRole === 'admin') {
     const { adminSecret } = req.body;
-    if (!adminSecret || adminSecret !== process.env.ADMIN_SECRET) {
-      return res.status(403).json({ error: 'Admin secret requerido' });
-    }
 
-    const adminSnap = await db.collection(USERS_COLLECTION).where('role', '==', 'admin').get();
-    if (!adminSnap.empty) return res.status(403).json({ error: 'Ya existe un admin registrado' });
+    if (!adminSecret || adminSecret !== process.env.ADMIN_SECRET) {
+      return res.status(403).json({ error: 'Admin secret requerido o incorrecto' });
+    }
   }
 
   try {
@@ -110,7 +110,8 @@ router.post('/login', async (req, res) => {
 
     if (lastAttempt && attempts >= 5) {
       const diffMs = Date.now() - lastAttempt.getTime();
-      if (diffMs < 5 * 60 * 1000) return res.status(429).json({ error: 'Demasiados intentos. Intenta en 5 minutos.' });
+      if (diffMs < 5 * 60 * 1000)
+        return res.status(429).json({ error: 'Demasiados intentos. Intenta en 5 minutos.' });
       else attempts = 0;
     }
 
@@ -137,7 +138,7 @@ router.post('/login', async (req, res) => {
     const idToken = json.idToken;
     const expiresIn = 60 * 60 * 24 * 5 * 1000;
     const sessionCookie = await admin.auth().createSessionCookie(idToken, { expiresIn });
-    //cookie que guarda la sesion
+
     res.cookie('session', sessionCookie, {
       maxAge: expiresIn,
       httpOnly: true,
