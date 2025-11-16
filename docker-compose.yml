@@ -1,0 +1,13 @@
+services:
+  brotes-app:
+    build:
+      context: ./brotes-Backend
+      dockerfile: Dockerfile
+    container_name: brotes-app
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./brotes-Backend/.env
+    volumes:
+      - ./brotes-Backend/firebaseServiceAccountKey.json:/app/firebaseServiceAccountKey.json:ro
+    restart: unless-stopped
