@@ -17,8 +17,13 @@ if (process.env.ALLOW_CORS === 'true') {
   'http://frontend:8080',
   'http://localhost:50812',
   'http://localhost:3000', 
-  process.env.PROD_ORIGIN
+   
 ];
+
+if (process.env.PROD_ORIGIN?.trim()) {
+  FRONTEND_ORIGINS.push(process.env.PROD_ORIGIN.trim());
+}
+
   app.use(cors({
     origin: (origin, callback) => {
       if (!origin || FRONTEND_ORIGINS.includes(origin)) return callback(null, true);

@@ -17,7 +17,7 @@ const ASSETS_TO_CACHE = [
   '/js/admin.js',
   '/js/activities.js',
   '/js/maestro.js',
-  '/img/Logo.png',
+  '/img/logo.png',
   '/img/huerto.jpg',
   '/img/hojas-textura.jpg',
   '/manifest.json'
