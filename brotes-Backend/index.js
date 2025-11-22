@@ -3,6 +3,7 @@ const path = require('path');
 const express = require('express');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
+
 const { router: authRoutes } = require('./routes/auth');
 const usersRoutes = require('./routes/users');
 const studentsRoutes = require('./routes/students');
@@ -10,9 +11,9 @@ const maestroRoutes = require('./routes/maestro');
 
 const app = express();
 
-console.log(" Iniciando servidor con CORS:", process.env.ALLOW_CORS);
+// CORS
+console.log("Iniciando servidor con CORS:", process.env.ALLOW_CORS);
 
-// config cors
 if (process.env.ALLOW_CORS === 'true') {
   const FRONTEND_ORIGINS = [
     'http://localhost:3000',
@@ -36,27 +37,47 @@ if (process.env.ALLOW_CORS === 'true') {
   }));
 }
 
-// middlewares
+// Middlewares
 app.use(express.json());
 app.use(cookieParser());
 
-// rutas api
+// STATIC FILES (SERVE FRONTEND)
+const publicPath = path.join(__dirname, 'public');
+app.use(express.static(publicPath));
+
+// RUTAS HTML (MULTI-PÁGINA)
+app.get('/', (req, res) => {
+  res.sendFile(path.join(publicPath, 'login.html'));
+});
+
+app.get('/login', (req, res) => {
+  res.sendFile(path.join(publicPath, 'login.html'));
+});
+
+app.get('/register', (req, res) => {
+  res.sendFile(path.join(publicPath, 'register.html'));
+});
+
+app.get('/dashboard', (req, res) => {
+  res.sendFile(path.join(publicPath, 'dashboard.html'));
+});
+
+app.get('/admin', (req, res) => {
+  res.sendFile(path.join(publicPath, 'admin.html'));
+});
+
+app.get('/maestro', (req, res) => {
+  res.sendFile(path.join(publicPath, 'maestro.html'));
+});
+
+// API
 app.use('/api/auth', authRoutes);
 app.use('/api/users', usersRoutes);
 app.use('/api/students', studentsRoutes);
 app.use('/api/maestro', maestroRoutes);
 
-// ftd
-const publicPath = path.join(__dirname, 'public');
-app.use(express.static(publicPath));
-
-// HTML5 ROUTING (SPA)
-app.get(/^\/(?!api).*/, (req, res) => {
-  res.sendFile(path.join(publicPath, 'index.html'));
-});
-
-// server
-const PORT = process.env.PORT ||  3000;
+// SERVER
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`Servidor corriendo en puerto ${PORT}`);
 });
