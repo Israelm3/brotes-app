@@ -56,3 +56,23 @@ body{
 .right button { background:var(--accent); color:white; border:none; cursor:pointer; }
 
 .msg{ margin-top:8px; font-weight:600; }
+
+/* === Responsivo === */
+@media (max-width:1024px){
+  .main{ flex-direction:column; gap:15px; padding:15px; }
+  .right{ width:100%; }
+}
+
+@media (max-width:768px){
+  .controls{ flex-direction:column; align-items:flex-start; gap:8px; }
+  .controls select, .controls button{ width:100%; }
+  .user-area{ flex-direction:column; align-items:flex-start; gap:5px; margin-top:5px; }
+}
+
+@media (max-width:480px){
+  .topbar{ flex-direction:column; align-items:flex-start; gap:8px; padding:10px; }
+  .brand{ font-size:1.2rem; }
+  .user-area button{ width:100%; padding:8px; }
+  .right input, .right select, .right button{ font-size:0.9rem; padding:8px; }
+  .usersTable th, .usersTable td{ font-size:0.85rem; padding:5px 4px; }
+}
