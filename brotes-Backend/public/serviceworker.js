@@ -1,28 +1,28 @@
 const CACHE_NAME = 'brotes-appshell-v3';
+const BASE = self.location.origin;
 const ASSETS_TO_CACHE = [
-  '/',
-  '/index.html',
-  '/login.html',
-  '/register.html',
-  '/dashboard.html',
-  '/activities.html',
-  '/maestro.html',
-  '/css/home.css',
-  '/css/styles.css',
-  '/css/dashboard.css',
-  '/css/admin.css',
-  '/css/maestro.css',
-  '/js/auth.js',
-  '/js/dashboard.js',
-  '/js/admin.js',
-  '/js/activities.js',
-  '/js/maestro.js',
-  '/img/logo.png',
-  '/img/huerto.jpg',
-  '/img/hojas-textura.jpg',
-  '/manifest.json'
+  `${BASE}/`,
+  `${BASE}/index.html`,
+  `${BASE}/login.html`,
+  `${BASE}/register.html`,
+  `${BASE}/dashboard.html`,
+  `${BASE}/activities.html`,
+  `${BASE}/maestro.html`,
+  `${BASE}/css/home.css`,
+  `${BASE}/css/styles.css`,
+  `${BASE}/css/dashboard.css`,
+  `${BASE}/css/admin.css`,
+  `${BASE}/css/maestro.css`,
+  `${BASE}/js/auth.js`,
+  `${BASE}/js/dashboard.js`,
+  `${BASE}/js/admin.js`,
+  `${BASE}/js/activities.js`,
+  `${BASE}/js/maestro.js`,
+  `${BASE}/img/logo.png`,
+  `${BASE}/img/huerto.jpg`,
+  `${BASE}/img/hojas-textura.jpg`,
+  `${BASE}/manifest.json`
 ];
-
 // Instalar
 self.addEventListener('install', event => {
   event.waitUntil(
@@ -43,13 +43,13 @@ self.addEventListener('activate', event => {
 self.addEventListener('fetch', event => {
   const req = event.request;
 
-  // ⚠ PERMITIR navegación normal sin redirigir a index.html
+  // PERMITIR navegación normal sin redirigir a index.html
   if (req.mode === 'navigate') {
     event.respondWith(fetch(req).catch(() => caches.match('/index.html')));
     return;
   }
 
-  // ⚠ NO CACHEAR LOGIN NI REGISTER NI SESIONES
+  // NO CACHEAR LOGIN NI REGISTER NI SESIONES
   if (req.url.includes('/api/login') || req.url.includes('/api/register') || req.url.includes('/api/profile')) {
     event.respondWith(fetch(req));
     return;
