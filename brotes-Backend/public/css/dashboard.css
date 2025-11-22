@@ -40,10 +40,31 @@ html,body { height:100%; margin:0; font-family: "Segoe UI", Tahoma, Geneva, Verd
 }
 
 /* === Activities / Challenges UI === */
-.activities-main { display:flex; gap:2rem; padding:2rem; flex-wrap:wrap; }
-.activities-panel, .challenges-panel { background: #fff; padding:1.2rem; border-radius:12px; box-shadow:0 8px 20px rgba(0,0,0,0.08); flex:1 1 420px; }
+.activities-main { 
+  display:flex; 
+  gap:2rem; 
+  padding:2rem; 
+  flex-wrap:wrap; 
+  max-width:1200px; 
+  margin:0 auto;
+  box-sizing:border-box;
+}
+
+.activities-panel, .challenges-panel { 
+  background: #fff; 
+  padding:1.2rem; 
+  border-radius:12px; 
+  box-shadow:0 8px 20px rgba(0,0,0,0.08); 
+  flex:1 1 420px; 
+  min-width:300px;
+}
+
+/* Tabla responsive: scroll horizontal */
+.table-wrapper { overflow-x:auto; }
 .activities-table { width:100%; border-collapse:collapse; margin-top:0.8rem; }
 .activities-table th, .activities-table td { padding:10px; border-bottom:1px solid #eee; text-align:left; font-size:0.95rem; }
+.activities-table th { background: #f0f9f0; color: #2e7d32; }
+
 .switch { position: relative; display:inline-block; width:46px; height:26px; }
 .switch input { opacity:0; width:0; height:0; }
 .slider { position:absolute; cursor:pointer; top:0; left:0; right:0; bottom:0; background:#ccc; transition:.4s; border-radius:26px; }
@@ -57,7 +78,7 @@ input:checked + .slider:before { transform:translateX(20px); }
 .challenge-card h3 { margin-bottom:4px; color:#2e7d32; }
 .challenge-card .muted { color:#666; margin-bottom:8px; }
 .challenge-card .reward { font-weight:700; color:#388e3c; margin-bottom:8px; }
-.challenge-actions { display:flex; gap:8px; align-items:center; }
+.challenge-actions { display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
 
 .challenge-card.status-pending { opacity:1; }
 .challenge-card.status-almost { box-shadow:0 8px 18px rgba(61,157,65,0.12); border-left:4px solid #ffb300; }
@@ -66,7 +87,17 @@ input:checked + .slider:before { transform:translateX(20px); }
 /* mensaje temporal */
 .temp-msg { position:fixed; right:20px; bottom:20px; background:#2e7d32; color:white; padding:10px 14px; border-radius:8px; box-shadow:0 6px 16px rgba(0,0,0,0.2); z-index:9999; font-weight:600; }
 
-/* Responsivo */
-@media (max-width:900px){
-  .activities-main { flex-direction:column; padding:1rem; }
+/* === Responsive reforzado === */
+@media (max-width:1024px) {
+  .activities-main { flex-direction:column; padding:1.5rem; }
+  .activities-panel, .challenges-panel { flex:1 1 100%; min-width:100%; }
 }
+
+@media (max-width:600px) {
+  .activities-table th, .activities-table td { font-size:0.85rem; padding:6px; }
+  .dash-header h1 { font-size:1.25rem; }
+  .dash-header h4 { font-size:0.9rem; }
+  .challenge-card { padding:10px; font-size:0.9rem; }
+  .btn { padding:6px 10px; font-size:0.85rem; }
+}
+
