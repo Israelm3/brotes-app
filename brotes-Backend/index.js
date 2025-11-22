@@ -3,7 +3,6 @@ const path = require('path');
 const express = require('express');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
-
 const { router: authRoutes } = require('./routes/auth');
 const usersRoutes = require('./routes/users');
 const studentsRoutes = require('./routes/students');
@@ -20,7 +19,6 @@ if (process.env.ALLOW_CORS === 'true') {
     'http://127.0.0.1:8080',
     'http://localhost:8080',
   ];
-  // Agrega origen de producción automáticamente
   if (process.env.PROD_ORIGIN?.trim()) {
     FRONTEND_ORIGINS.push(process.env.PROD_ORIGIN.trim());
   }
@@ -59,7 +57,6 @@ app.get(/^\/(?!api).*/, (req, res) => {
 
 // server
 const PORT = process.env.PORT ||  3000;
-
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`Servidor corriendo en puerto ${PORT}`);
 });
