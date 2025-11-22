@@ -13,9 +13,9 @@ const ACTIVITIES = [
 
 // Retos estáticos
 const CHALLENGES = [
-  { id: 'reto1', title: 'Germina una lenteja', target: 'Germinar 10 semillas', reward: '10 XP' },
-  { id: 'reto2', title: 'Fertiliza correctamente', target: 'Usar compost casero', reward: '15 XP' },
-  { id: 'reto3', title: 'Registro de humedad', target: 'Registrar humedad 7 días seguidos', reward: '20 XP' }
+  { id: 'reto1', title: 'Germina una lenteja', target: 'Germinar 10 semillas', reward: '10 Pts' },
+  { id: 'reto2', title: 'Fertiliza correctamente', target: 'Usar compost casero', reward: '15 Pts' },
+  { id: 'reto3', title: 'Registro de humedad', target: 'Registrar humedad 7 días seguidos', reward: '20 Pts' }
 ];
 
 // Helper: obtener key en localStorage por usuario
