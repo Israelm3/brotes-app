@@ -1,0 +1,130 @@
+:root {
+  --green-700: #2e7d32;
+  --green-500: #4caf50;
+  --bg-activities: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--bg-activities);
+}
+
+/* Header */
+.dash-header {
+  background: linear-gradient(rgba(72,170,70,0.9), rgba(139,195,74,0.9)),
+              url('/img/hojas-textura.jpg');
+  color: white;
+  padding: 8px 0; /* altura reducida */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.dash-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  gap: 1rem;
+}
+
+.dash-left { display:flex; flex-direction:column; gap:0.2rem; }
+.dash-left h1 { margin:0; font-size:1.5rem; }
+.dash-left h4 { margin:0; font-size:1rem; font-weight:400; }
+
+.dash-actions .btn {
+  margin-left:0.5rem;
+  padding:6px 10px;
+  border-radius:8px;
+  border:none;
+  cursor:pointer;
+  font-weight:600;
+}
+
+.btn { background:white; color:var(--green-700); }
+.btn:hover { transform:translateY(-2px); transition:0.15s; }
+
+/* Main layout */
+.activities-main {
+  display:flex;
+  gap:2rem;
+  padding:1.5rem;
+  flex-wrap:wrap;
+  max-width:1200px;
+  margin:0 auto;
+  box-sizing:border-box;
+}
+
+.activities-panel, .challenges-panel {
+  background: #fff;
+  padding:1rem;
+  border-radius:12px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.08);
+  flex:1 1 420px;
+  min-width:300px;
+}
+
+/* Scroll horizontal en tablas */
+.table-wrapper {
+  overflow-x:auto;
+  display:flex;
+  justify-content:center; /* centra la tabla */
+}
+.activities-table {
+  width:100%;
+  max-width:100%;
+  border-collapse:collapse;
+  margin-top:0.8rem;
+}
+.activities-table th, .activities-table td {
+  padding:10px;
+  border-bottom:1px solid #eee;
+  text-align:left;
+  font-size:0.95rem;
+}
+.activities-table th {
+  background: #f0f9f0;
+  color:#2e7d32;
+}
+
+/* Switch */
+.switch { position: relative; display:inline-block; width:46px; height:26px; }
+.switch input { opacity:0; width:0; height:0; }
+.slider { position:absolute; cursor:pointer; top:0; left:0; right:0; bottom:0; background:#ccc; transition:.4s; border-radius:26px; }
+.slider:before { position:absolute; content:""; height:20px; width:20px; left:3px; bottom:3px; background:white; transition:.4s; border-radius:50%; }
+input:checked + .slider { background:#4caf50; }
+input:checked + .slider:before { transform:translateX(20px); }
+
+/* Challenges */
+.challenges-list { display:flex; flex-direction:column; gap:12px; margin-top:0.6rem; }
+.challenge-card { padding:12px; border-radius:10px; background:linear-gradient(180deg,#fcfff6,#f0fff0); border:1px solid #e8f5e9; }
+.challenge-card h3 { margin-bottom:4px; color:#2e7d32; }
+.challenge-card .muted { color:#666; margin-bottom:8px; }
+.challenge-card .reward { font-weight:700; color:#388e3c; margin-bottom:8px; }
+.challenge-actions { display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+
+/* Responsive activities */
+@media (max-width:1024px) {
+  .activities-main { flex-direction:column; padding:1rem; }
+  .activities-panel, .challenges-panel { flex:1 1 100%; min-width:100%; }
+  .dash-inner { flex-direction:column; align-items:center; gap:0.5rem; text-align:center; }
+  .dash-actions { width:100%; display:flex; justify-content:center; flex-wrap:wrap; gap:0.5rem; margin-top:0.5rem; }
+}
+
+@media (max-width:768px) {
+  .activities-table th, .activities-table td { font-size:0.85rem; padding:6px; }
+  .challenge-card { padding:10px; font-size:0.9rem; }
+  .btn { padding:6px 10px; font-size:0.85rem; }
+  .dash-header h1 { font-size:1.3rem; }
+  .dash-header h4 { font-size:0.9rem; }
+}
+
+@media (max-width:480px) {
+  .activities-panel, .challenges-panel { padding:0.8rem; }
+  .activities-table th, .activities-table td { font-size:0.8rem; padding:4px; }
+  .challenge-card { font-size:0.85rem; padding:8px; }
+  .dash-header h1 { font-size:1.1rem; }
+  .dash-header h4 { font-size:0.8rem; }
+}
